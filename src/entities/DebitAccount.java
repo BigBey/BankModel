@@ -2,40 +2,32 @@ package entities;
 
 import java.util.Date;
 
-public class DebitAccount implements IBankAccount {
+public class DebitAccount extends BankAccount{
 
-    private Double accountBalance;
     private Double interestOnBalance;
     private Date checkDate;
     private Double addingAmount;
 
-    public DebitAccount(Double accountBalance, Double interestOnBalance) {
+    public DebitAccount(Double accountBalance, Integer accountNumber, Double interestOnBalance) {
         this.accountBalance = accountBalance;
+        this.accountNumber = accountNumber;
         this.interestOnBalance = interestOnBalance;
     }
 
     @Override
-    public void withdraw(double money) {
+    public boolean withdraw(double money) {
         if(accountBalance - money > 0) {
             accountBalance -= money;
+            return true;
         }else{
             System.out.println("You can't withdraw money, because insufficient funds");
+            return false;
         }
     }
 
     @Override
     public void fund(double money) {
         accountBalance+=money;
-    }
-
-    @Override
-    public void transfer(IBankAccount account, double money) {
-        if( accountBalance > 0) {
-            this.withdraw(money);
-            account.fund(money);
-        }else{
-            System.out.println("You can't withdraw money, because insufficient funds");
-        }
     }
 
     public void charge(){
