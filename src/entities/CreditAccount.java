@@ -20,11 +20,10 @@ public class CreditAccount extends BankAccount{
     public boolean withdraw(double money) {
         if(accountBalance - money > 0){
             accountBalance -= money;
-            debt += money;
             return true;
         }else if(accountBalance - money >= creditLimit.first){
             accountBalance -= money;
-            debt += money*(1 + commission);
+            debt += money*commission;
             return true;
         }else{
             System.out.println("You can't withdraw money, because your limit is reached");
@@ -38,5 +37,10 @@ public class CreditAccount extends BankAccount{
         if(debt - money >= 0) {
             debt -= money;
         }
+    }
+
+    public void payComission(){
+        accountBalance -= debt;
+        debt = 0.0;
     }
 }
