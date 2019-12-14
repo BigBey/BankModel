@@ -1,8 +1,9 @@
 package builders;
 
+import entities.Bank;
 import entities.Client;
 
-public class ClientBuilder implements IBuilder {
+public class ClientBuilder implements IClientBuilder {
 
     private String name;
     private String surname;
@@ -37,11 +38,16 @@ public class ClientBuilder implements IBuilder {
         this.passportNumber = null;
     }
 
-    public Client getResult(){
-        if(name != null && surname != null)
-            return new Client(name, surname, address, passportNumber);
-        else
+    public Client getResult(Bank bank){
+        if(name != null && surname != null) {
+            Client client = new Client(name, surname, address, passportNumber);
+            bank.addClient(client);
+            return client;
+        }
+        else {
+            System.out.println("Client information is not sufficient");
             return null;
+        }
     }
 
 }

@@ -1,9 +1,11 @@
 package entities;
 
+import utils.Pair;
 import utils.Utils;
 
 import java.time.Month;
 import java.time.YearMonth;
+import java.util.ArrayList;
 import java.util.Date;
 
 public class DepositAccount extends BankAccount{
@@ -13,13 +15,14 @@ public class DepositAccount extends BankAccount{
     private Date checkDate;
     private Double addingAmount;
 
-    public DepositAccount(Double accountBalance, Integer accountNumber, Double interestOnBalance, Date expirationDate) {
+    public DepositAccount(Double accountBalance, Integer accountNumber,
+                          ArrayList<Pair<Pair<Double, Double>,Double>> depositChoices, Date expirationDate) {
         this.accountBalance = accountBalance;
         this.accountNumber = accountNumber;
-        this.interestOnBalance = Utils.getInterestOnBalance(accountBalance);
+        this.interestOnBalance = Utils.getInterestOnBalance(depositChoices, accountBalance);
         this.expirationDate = expirationDate;
         this.checkDate = new Date();
-        addingAmount = 0.0;
+        this.addingAmount = 0.0;
     }
 
     @Override

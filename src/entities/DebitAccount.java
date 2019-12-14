@@ -26,7 +26,7 @@ public class DebitAccount extends BankAccount{
     }
 
     @Override
-    public void fund(double money) {
+    void fund(double money) {
         accountBalance+=money;
     }
 

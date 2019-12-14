@@ -1,13 +1,15 @@
 package utils;
 
+import java.util.ArrayList;
+
 public class Utils {
 
-    public static double getInterestOnBalance(Double startBalance){
-        if(startBalance < 50000){
-            return 5.0;
-        }else if (startBalance >= 50000 && startBalance <= 100000){
-                return 5.5;
+    public static double getInterestOnBalance(ArrayList<Pair<Pair<Double, Double>,Double>> depositChoices, double startBalance){
+        for (Pair<Pair<Double, Double>,Double> choice:
+             depositChoices) {
+            if(startBalance >= choice.first.first && startBalance <= choice.first.second)
+                return choice.second;
         }
-        return 6.0;
+        return -0.0;
     }
 }
