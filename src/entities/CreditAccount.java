@@ -1,5 +1,6 @@
 package entities;
 
+import subject_observer.IObserver;
 import utils.Pair;
 
 public class CreditAccount extends BankAccount{
@@ -39,7 +40,8 @@ public class CreditAccount extends BankAccount{
         }
     }
 
-    public void payComission(){
+    @Override
+    public void update(){
         accountBalance -= debt;
         debt = 0.0;
     }

@@ -1,5 +1,7 @@
 package entities;
 
+import subject_observer.IObserver;
+
 import java.util.Date;
 
 public class DebitAccount extends BankAccount{
@@ -8,10 +10,24 @@ public class DebitAccount extends BankAccount{
     private Date checkDate;
     private Double addingAmount;
 
+    public Double getInterestOnBalance() {
+        return interestOnBalance;
+    }
+
+    public Date getCheckDate() {
+        return checkDate;
+    }
+
+    public Double getAddingAmount() {
+        return addingAmount;
+    }
+
     public DebitAccount(Double accountBalance, Integer accountNumber, Double interestOnBalance) {
         this.accountBalance = accountBalance;
         this.accountNumber = accountNumber;
         this.interestOnBalance = interestOnBalance;
+        checkDate = new Date();
+        addingAmount = 0.0;
     }
 
     @Override
@@ -30,12 +46,14 @@ public class DebitAccount extends BankAccount{
         accountBalance+=money;
     }
 
-    public void charge(){
+    @Override
+    public void update(){
         if ((new Date()).getMonth() !=  checkDate.getMonth()){
             accountBalance += addingAmount;
             addingAmount = 0.0;
         }
-        if(checkDate.equals(new Date())){
+        if(checkDate.getYear() == new Date().getYear() && checkDate.getMonth() == checkDate.getMonth()
+                && checkDate.getDay() == new Date().getDay()){
             addingAmount += accountBalance * (interestOnBalance/365);
         }
         checkDate = new Date();

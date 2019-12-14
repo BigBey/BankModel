@@ -4,6 +4,8 @@ import creators.DebitCreator;
 import creators.DepositCreator;
 import entities.Bank;
 import entities.BankAccount;
+import entities.DebitAccount;
+import entities.DepositAccount;
 
 public class Main {
 
@@ -32,6 +34,11 @@ public class Main {
         accountCreator.linkNewAccountToClient(sberbank, "Иванов Иван", 10000);
         accountCreator = new DepositCreator();
         accountCreator.linkNewAccountToClient(sberbank, "Иванов Иван", 50000);
+
+        sberbank.Notify();
+
+        DebitAccount debitAccount = (DebitAccount) sberbank.findAccount(sberbank.findClient("Иванов", "Иван").getAccounts().get(0));
+        System.out.println(debitAccount.getAddingAmount());
         System.out.println(sberbank.findClient("Иванов", "Иван").getAccounts().toString());
 
     }

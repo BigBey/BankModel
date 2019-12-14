@@ -1,6 +1,8 @@
 package entities;
 
-public abstract class BankAccount {
+import subject_observer.IObserver;
+
+public abstract class BankAccount implements IObserver {
 
     protected double accountBalance;
     protected Integer accountNumber;
@@ -13,9 +15,14 @@ public abstract class BankAccount {
     abstract boolean withdraw(double money);
     abstract void fund(double money);
 
-    void trasfer(BankAccount otherAccount, double money){
+    void transfer(BankAccount otherAccount, double money){
         if(this.withdraw(money)){
             otherAccount.fund(money);
         }
+    }
+
+    @Override
+    public void update() {
+
     }
 }
