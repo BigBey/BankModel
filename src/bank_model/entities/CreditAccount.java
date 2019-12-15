@@ -1,9 +1,8 @@
-package entities;
+package bank_model.entities;
 
-import subject_observer.IObserver;
-import utils.Pair;
+import bank_model.utils.Pair;
 
-public class CreditAccount extends BankAccount{
+public class CreditAccount extends BankAccount {
 
     private Double debt;
     private Pair<Double, Double> creditLimit;

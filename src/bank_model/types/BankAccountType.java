@@ -1,4 +1,4 @@
-package types;
+package bank_model.types;
 
 public enum BankAccountType {
     СURRENT_ACCOUNT,

@@ -1,4 +1,4 @@
-package utils;
+package bank_model.utils;
 
 public class Pair<D, Y> {
     public D first;

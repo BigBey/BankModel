@@ -1,12 +1,9 @@
-package builders;
+package bank_model.builders;
 
-import entities.Bank;
-import entities.BankAccount;
-import entities.Client;
-import utils.Pair;
+import bank_model.entities.Bank;
+import bank_model.utils.Pair;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 public class BankBuilder implements IBankBuilder {
     private String title;

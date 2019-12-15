@@ -1,4 +1,4 @@
-package entities;
+package bank_model.entities;
 
 import java.util.ArrayList;
 

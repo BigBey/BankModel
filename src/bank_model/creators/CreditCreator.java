@@ -1,10 +1,10 @@
-package creators;
+package bank_model.creators;
 
-import entities.Bank;
-import entities.BankAccount;
-import entities.CreditAccount;
+import bank_model.entities.Bank;
+import bank_model.entities.BankAccount;
+import bank_model.entities.CreditAccount;
 
-public class CreditCreator extends AccountCreator{
+public class CreditCreator extends AccountCreator {
     @Override
     public BankAccount createAccount(Bank bank, double startBalance) {
         if(bank.getCreditLimit() != null && bank.getCommission() != null)

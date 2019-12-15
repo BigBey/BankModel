@@ -1,8 +1,12 @@
-package entities;
+package bank_model.entities;
 
-import subject_observer.IObserver;
-import subject_observer.ISubject;
-import utils.Pair;
+import bank_model.commands.Fund;
+import bank_model.commands.Transaction;
+import bank_model.commands.Transfer;
+import bank_model.commands.Withdraw;
+import bank_model.subject_observer.IObserver;
+import bank_model.subject_observer.ISubject;
+import bank_model.utils.Pair;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -116,4 +120,40 @@ public class Bank implements ISubject {
             observer.update();
         }
     }
+
+    private void executeTransaction(Transaction transaction, BankAccount bankAccount){
+        if(transaction.execute()){
+            bankAccount.history.push(transaction);
+        }
+    }
+
+    public void undo(Integer accountNumber) {
+        BankAccount bankAccount = findAccount(accountNumber);
+
+        if (bankAccount.history.isEmpty()) return;
+
+        Transaction transaction = bankAccount.history.pop();
+        if (transaction != null) {
+            transaction.undo();
+        }
+    }
+
+    public void withdraw(Integer accountNumber, double money){
+        BankAccount account = findAccount(accountNumber);
+        executeTransaction(new Withdraw(account, money), account);
+    }
+
+    public void fund(Integer accountNumber, double money){
+        BankAccount account = findAccount(accountNumber);
+        executeTransaction(new Fund(account, money), account);
+    }
+
+    public void transfer(Integer accountNumber1, Integer accountNumber2, double money){
+        BankAccount account1 = findAccount(accountNumber1);
+        BankAccount account2 = findAccount(accountNumber2);
+
+        executeTransaction(new Transfer(account1, money, account2), account1);
+    }
+
+
 }

@@ -1,4 +1,4 @@
-package utils;
+package bank_model.utils;
 
 import java.util.ArrayList;
 

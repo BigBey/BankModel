@@ -1,9 +1,8 @@
-package creators;
+package bank_model.creators;
 
-import entities.Bank;
-import entities.BankAccount;
-import entities.DebitAccount;
-import entities.DepositAccount;
+import bank_model.entities.Bank;
+import bank_model.entities.BankAccount;
+import bank_model.entities.DebitAccount;
 
 public class DebitCreator extends AccountCreator {
     @Override

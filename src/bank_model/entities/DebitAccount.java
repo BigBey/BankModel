@@ -1,10 +1,8 @@
-package entities;
-
-import subject_observer.IObserver;
+package bank_model.entities;
 
 import java.util.Date;
 
-public class DebitAccount extends BankAccount{
+public class DebitAccount extends BankAccount {
 
     private Double interestOnBalance;
     private Date checkDate;
@@ -42,7 +40,7 @@ public class DebitAccount extends BankAccount{
     }
 
     @Override
-    void fund(double money) {
+    public void fund(double money) {
         accountBalance+=money;
     }
 

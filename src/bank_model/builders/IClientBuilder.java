@@ -1,4 +1,4 @@
-package builders;
+package bank_model.builders;
 
 public interface IClientBuilder {
     void setName(String name);

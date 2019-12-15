@@ -1,15 +1,12 @@
-package entities;
+package bank_model.entities;
 
-import subject_observer.IObserver;
-import utils.Pair;
-import utils.Utils;
+import bank_model.utils.Pair;
+import bank_model.utils.Utils;
 
-import java.time.Month;
-import java.time.YearMonth;
 import java.util.ArrayList;
 import java.util.Date;
 
-public class DepositAccount extends BankAccount{
+public class DepositAccount extends BankAccount {
 
     private Double interestOnBalance;
     private Date expirationDate;

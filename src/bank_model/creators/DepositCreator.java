@@ -1,14 +1,14 @@
-package creators;
+package bank_model.creators;
 
-import entities.Bank;
-import entities.BankAccount;
-import entities.DepositAccount;
+import bank_model.entities.Bank;
+import bank_model.entities.BankAccount;
+import bank_model.entities.DepositAccount;
 
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
-public class DepositCreator extends AccountCreator{
+public class DepositCreator extends AccountCreator {
 
     @Override
     public BankAccount createAccount(Bank bank, double startBalance) {

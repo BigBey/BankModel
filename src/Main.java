@@ -1,11 +1,13 @@
-import builders.*;
-import creators.AccountCreator;
-import creators.DebitCreator;
-import creators.DepositCreator;
-import entities.Bank;
-import entities.BankAccount;
-import entities.DebitAccount;
-import entities.DepositAccount;
+
+import bank_model.builders.BankBuilder;
+import bank_model.builders.BankDirector;
+import bank_model.builders.ClientBuilder;
+import bank_model.builders.ClientDirector;
+import bank_model.creators.AccountCreator;
+import bank_model.creators.DebitCreator;
+import bank_model.creators.DepositCreator;
+import bank_model.entities.Bank;
+import bank_model.entities.DebitAccount;
 
 public class Main {
 
@@ -39,6 +41,10 @@ public class Main {
 
         DebitAccount debitAccount = (DebitAccount) sberbank.findAccount(sberbank.findClient("Иванов", "Иван").getAccounts().get(0));
         System.out.println(debitAccount.getAddingAmount());
+        sberbank.withdraw(0, 3000);
+        System.out.println(debitAccount.getAccountBalance());
+        sberbank.undo(0);
+        System.out.println(debitAccount.getAccountBalance());
         System.out.println(sberbank.findClient("Иванов", "Иван").getAccounts().toString());
 
     }

@@ -1,7 +1,7 @@
-package builders;
+package bank_model.builders;
 
-import entities.Bank;
-import entities.Client;
+import bank_model.entities.Bank;
+import bank_model.entities.Client;
 
 public class ClientBuilder implements IClientBuilder {
 

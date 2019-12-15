@@ -1,11 +1,7 @@
-package creators;
+package bank_model.creators;
 
-import entities.Bank;
-import entities.BankAccount;
-import entities.Client;
-
-import java.lang.reflect.Array;
-import java.util.ArrayList;
+import bank_model.entities.Bank;
+import bank_model.entities.BankAccount;
 
 public abstract class AccountCreator {
 

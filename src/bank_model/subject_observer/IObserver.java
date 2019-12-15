@@ -1,4 +1,4 @@
-package subject_observer;
+package bank_model.subject_observer;
 
 public interface IObserver {
     void update();
