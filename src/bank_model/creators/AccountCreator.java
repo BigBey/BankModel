@@ -9,6 +9,7 @@ public abstract class AccountCreator {
         BankAccount bankAccount = createAccount(bank, money);
         if(bankAccount != null) {
             String[]  name = fullName.split(" ");
+            bankAccount.setClientFullName(fullName);
             bank.findClient(name[0], name[1]).addAccount(bankAccount.getAccountNumber());
             bank.addAccount(bankAccount);
         }

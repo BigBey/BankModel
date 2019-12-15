@@ -7,9 +7,17 @@ public abstract class BankAccount implements IObserver {
 
     protected double accountBalance;
     protected Integer accountNumber;
+    protected String clientFullName;
     TransactionHistory history = new TransactionHistory();
 
 
+    public String getClientFullName() {
+        return clientFullName;
+    }
+
+    public void setClientFullName(String clientFullName) {
+        this.clientFullName = clientFullName;
+    }
 
     public Integer getAccountNumber() {
         return accountNumber;

@@ -140,7 +140,13 @@ public class Bank implements ISubject {
 
     public void withdraw(Integer accountNumber, double money){
         BankAccount account = findAccount(accountNumber);
-        executeTransaction(new Withdraw(account, money), account);
+        Double accountBalance = account.getAccountBalance();
+        String[] fullName = account.getClientFullName().split(" ");
+        Client client = findClient(fullName[0], fullName[1]);
+        if((client.getAddress() != null && client.getPassportNumber() != null) ||
+                (accountBalance - money >= safeLimit.first && money <= safeLimit.second)) {
+            executeTransaction(new Withdraw(account, money), account);
+        }
     }
 
     public void fund(Integer accountNumber, double money){
@@ -150,9 +156,14 @@ public class Bank implements ISubject {
 
     public void transfer(Integer accountNumber1, Integer accountNumber2, double money){
         BankAccount account1 = findAccount(accountNumber1);
+        Double accountBalance = account1.getAccountBalance();
+        String[] fullName = account1.getClientFullName().split(" ");
+        Client client = findClient(fullName[0], fullName[1]);
         BankAccount account2 = findAccount(accountNumber2);
-
-        executeTransaction(new Transfer(account1, money, account2), account1);
+        if((client.getAddress() != null && client.getPassportNumber() != null) ||
+                (accountBalance - money >= safeLimit.first && money <= safeLimit.second)) {
+            executeTransaction(new Transfer(account1, money, account2), account1);
+        }
     }
 
 

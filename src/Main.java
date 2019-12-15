@@ -28,7 +28,7 @@ public class Main {
         Bank alfabank = bankBuilder.getResult();
         bankBuilder.reset();
 
-        clientDirector.createFullClient(clientBuilder, "Иван", "Иванов", "Ивановская, 7", "4012 453534");
+        clientDirector.createFullClient(clientBuilder, "Иван", "Иванов", "Ивановская 7", "4012 453534");
         clientBuilder.getResult(sberbank);
         clientBuilder.getResult(alfabank);
         clientBuilder.reset();
